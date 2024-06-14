@@ -1,0 +1,17 @@
+{
+  "name": "cwgi-api",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev --port 4010"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "hono": "^4.4.6",
+    "wrangler": "^3.60.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

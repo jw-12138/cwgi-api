@@ -1,0 +1,3 @@
+name = "cwgi"
+main = "index.ts"
+compatibility_date = "2023-06-13"
