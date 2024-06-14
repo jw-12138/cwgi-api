@@ -1,3 +1,6 @@
 name = "cwgi-api"
 main = "index.ts"
 compatibility_date = "2023-06-13"
+
+[vars]
+SITE_URL = "https://jw1.dev"

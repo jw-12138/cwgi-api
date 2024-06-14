@@ -11,11 +11,13 @@ export default async function (c: Context) {
   }
 
   if (!r) {
-    r = c.env.SITE_URL
-  } else {
-    // decode URI
-    r = decodeURIComponent(r)
+    return c.json({
+      error: 'Missing redirect URL'
+    })
   }
+
+  // decode URI
+  r = decodeURIComponent(r)
 
   if (!code) {
     return c.json({

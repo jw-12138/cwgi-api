@@ -4,6 +4,19 @@ export default async function (c: Context) {
   let api = c.req.param('link')
   let method = c.req.method
 
+  let reqOrigin = c.req.header('origin')
+
+  const allowedOrigins = [
+    'http://localhost:4321',
+    c.env.SITE_URL
+  ]
+
+  if(!allowedOrigins.includes(reqOrigin)){
+    return c.json({
+      error: 'Invalid origin'
+    }, 400)
+  }
+
   let queries = c.req.query()
 
   if (Object.keys(queries).length > 0) {
