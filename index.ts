@@ -6,7 +6,12 @@ import callback from "./routes/callback.ts";
 
 const app = new Hono()
 
-app.use('*', cors())
+app.use('*', cors({
+  origin: [
+    'http://localhost:4321',
+    'https://jw1.dev'
+  ]
+}))
 
 app.get('/', (c) => c.text('Hello CWGI!'))
 
