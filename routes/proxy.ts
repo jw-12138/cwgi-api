@@ -11,7 +11,16 @@ export default async function (c: Context) {
     c.env.SITE_URL
   ]
 
-  if(!allowedOrigins.includes(reqOrigin)){
+  if(!reqOrigin){
+    try {
+      // resolve image request
+      reqOrigin = new URL(c.req.header('referer') || '').origin
+    } catch (e) {
+      reqOrigin = undefined
+    }
+  }
+
+  if (!allowedOrigins.includes(reqOrigin)) {
     return c.json({
       error: 'Invalid origin'
     }, 400)
@@ -84,7 +93,7 @@ export default async function (c: Context) {
     }
   })
 
-  if(!remoteHeaders.get('authorization') && c.env.GITHUB_TOKEN){
+  if (!remoteHeaders.get('authorization') && c.env.GITHUB_TOKEN) {
     remoteHeaders.set('authorization', `Bearer ${c.env.GITHUB_TOKEN}`)
   }
 
