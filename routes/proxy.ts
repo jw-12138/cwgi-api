@@ -4,6 +4,13 @@ export default async function (c: Context) {
   let api = c.req.param('link')
   let method = c.req.method
 
+  let queries = c.req.query()
+
+  if (Object.keys(queries).length > 0) {
+    let queryString = new URLSearchParams(queries).toString()
+    api = `${api}?${queryString}`
+  }
+
   let testURL
   try {
     testURL = new URL(api)
