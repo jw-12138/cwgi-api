@@ -8,6 +8,8 @@ export default async function (c: Context) {
 
   const allowedOrigins = [
     'http://localhost:4321',
+    'http://localhost:19247',
+    'http://localhost:19248',
     c.env.SITE_URL
   ]
 
