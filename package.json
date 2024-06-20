@@ -9,7 +9,8 @@
   "devDependencies": {
     "@types/bun": "latest",
     "hono": "^4.4.6",
-    "wrangler": "^3.60.2"
+    "wrangler": "^3.60.2",
+    "markdown-it": "^14.1.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
