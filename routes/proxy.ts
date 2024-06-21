@@ -19,7 +19,6 @@ export default async function (c: Context) {
   })
 
   const allowedOrigins = [
-    'http://localhost:4321',
     c.env.SITE_URL,
     ...envAllowedOrigins
   ]
