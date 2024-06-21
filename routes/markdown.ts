@@ -28,6 +28,41 @@ md.renderer.rules.text = function (tokens, idx) {
 }
 
 export default async function (c: Context) {
+
+  let reqOrigin = c.req.header('origin')
+
+  let envAllowedOrigins = c.env.ALLOWED_ORIGINS ? c.env.ALLOWED_ORIGINS.split(',') : []
+
+  envAllowedOrigins.forEach((origin: string) => {
+    try {
+      new URL(origin)
+    } catch (e) {
+      return c.json({
+        error: `Invalid ALLOWED_ORIGINS: ${origin}, Origin must be a valid URL.`
+      }, 500)
+    }
+  })
+
+  const allowedOrigins = [
+    c.env.SITE_URL,
+    ...envAllowedOrigins
+  ]
+
+  if (!reqOrigin) {
+    try {
+      // resolve image request
+      reqOrigin = new URL(c.req.header('referer') || '').origin
+    } catch (e) {
+      reqOrigin = undefined
+    }
+  }
+
+  if (!allowedOrigins.includes(reqOrigin)) {
+    return c.json({
+      error: 'Invalid origin'
+    }, 400)
+  }
+
   let body
 
   try {
