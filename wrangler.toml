@@ -4,4 +4,4 @@ compatibility_date = "2023-06-13"
 
 [vars]
 SITE_URL = "https://jw1.dev"
-ALLOWED_ORIGINS = "http://localhost:19247,http://localhost:4321"
+ALLOWED_ORIGINS = "http://localhost:19247,http://localhost:4321,https://cwgi-docs.jw1.dev"
