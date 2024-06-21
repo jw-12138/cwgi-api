@@ -4,29 +4,29 @@ export default async function (c: Context) {
   let api = c.req.param('link')
   let method = c.req.method
 
-  let reqOrigin = c.req.header('origin')
-
-  const allowedOrigins = [
-    'http://localhost:4321',
-    'http://localhost:19247',
-    'http://localhost:19248',
-    c.env.SITE_URL
-  ]
-
-  if(!reqOrigin){
-    try {
-      // resolve image request
-      reqOrigin = new URL(c.req.header('referer') || '').origin
-    } catch (e) {
-      reqOrigin = undefined
-    }
-  }
-
-  if (!allowedOrigins.includes(reqOrigin)) {
-    return c.json({
-      error: 'Invalid origin'
-    }, 400)
-  }
+  // let reqOrigin = c.req.header('origin')
+  //
+  // const allowedOrigins = [
+  //   'http://localhost:4321',
+  //   'http://localhost:19247',
+  //   'http://localhost:19248',
+  //   c.env.SITE_URL
+  // ]
+  //
+  // if(!reqOrigin){
+  //   try {
+  //     // resolve image request
+  //     reqOrigin = new URL(c.req.header('referer') || '').origin
+  //   } catch (e) {
+  //     reqOrigin = undefined
+  //   }
+  // }
+  //
+  // if (!allowedOrigins.includes(reqOrigin)) {
+  //   return c.json({
+  //     error: 'Invalid origin'
+  //   }, 400)
+  // }
 
   let queries = c.req.query()
 
